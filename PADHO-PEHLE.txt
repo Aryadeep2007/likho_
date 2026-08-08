@@ -1,0 +1,120 @@
+===========================================================
+   LIKHO - apna blog, apne computer pe
+   (pehle ye padh lo, 1 minute lagega)
+===========================================================
+
+
+KYA KARNA HAI (bas 3 step)
+---------------------------------------------------------
+
+1. Is ZIP file pe RIGHT-CLICK karo -> "Extract All..." ->
+   "Extract" dabao.
+
+   *** Ye step skip mat karna. ***
+   Zip ke andar se seedha chalaoge toh kaam nahi karega.
+
+2. Jo naya folder bana hai, usko kholo.
+
+3. "run.bat" pe DOUBLE-CLICK karo.
+
+Bas. Ek kaali window khulegi (wo normal hai, band mat karna)
+aur 2-3 second me browser me tumhara blog khul jayega.
+
+
+===========================================================
+
+
+PEHLI BAAR CHALANE PE 2 POPUP AA SAKTE HAIN
+---------------------------------------------------------
+
+POPUP 1 - "Windows protected your PC" (neeli screen)
+
+   Ye isliye aata hai kyunki humne Microsoft ko paise
+   dekar apne app ko "sign" nahi karvaya. Har naye app
+   ke saath hota hai.
+
+   Karo ye:  "More info" pe click karo
+             phir "Run anyway" pe click karo
+
+
+POPUP 2 - "Windows Firewall" wala
+
+   "Allow access" pe click karo.
+
+   Ye sirf isliye chahiye taki tumhara PHONE bhi same
+   wifi pe ye blog khol sake. Mana kar doge toh blog
+   phir bhi chalega, bas phone wala feature band rahega.
+
+
+===========================================================
+
+
+ISME KYA KYA KAR SAKTE HO
+---------------------------------------------------------
+
+* "+ Naya post" se likhna shuru karo
+
+* Ctrl+K dabao -> kuch bhi search karo
+
+* Post ke andar [[kisi post ka naam]] likho, wo apne aap
+  link ban jayega. Phir "Naksha" page pe jao - poora jaal
+  dikhega ki kaunsa post kisse juda hai.
+
+* Upar right me "QR" button hai. Click karo, phone se
+  scan karo, blog phone me khul jayega.
+  (phone aur computer same wifi pe hone chahiye)
+
+* "Dashboard" pe dekho ki log tumhara post kahan tak
+  padhte hain aur kahan bore hoke chhod dete hain.
+
+
+===========================================================
+
+
+TUMHARE POSTS KAHAN HAIN?
+---------------------------------------------------------
+
+Usi folder ke andar "blog-data" naam ka folder ban jayega.
+Tumhare saare posts wahan simple text files me hain.
+
+Matlab:
+  - Notepad se bhi khol ke padh sakte ho
+  - Pendrive me copy kar sakte ho
+  - Kabhi ye app band bhi ho jaye toh bhi tumhara likha
+    hua kahin nahi jayega
+
+Poora backup ek file me chahiye? Neeche "Backup download"
+pe click karo.
+
+
+===========================================================
+
+
+KUCH KAAM NAHI KAR RAHA?
+---------------------------------------------------------
+
+"Windows cannot find likho.exe"
+   -> Zip extract nahi kiya hai. Step 1 dobara karo.
+
+Kaali window khulti hai aur turant band ho jati hai
+   -> Zip extract nahi kiya hai. Step 1 dobara karo.
+
+"port 4000 already busy" likha aa raha hai
+   -> Likho pehle se chal raha hai. Purani kaali window
+      dhundo aur band karo.
+   -> Ya doosre port pe chalao: kaali window me type karo
+      run.bat 4001
+      aur Enter dabao.
+
+Browser khud nahi khula
+   -> Koi baat nahi. Browser kholo aur address bar me
+      type karo:  localhost:4000
+
+Blog band kaise karein?
+   -> Kaali window band kar do. Bas.
+
+
+===========================================================
+   Kuch bhi toota toh dobara run.bat chala dena.
+   Tumhare posts kabhi delete nahi honge.
+===========================================================

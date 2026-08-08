@@ -1,0 +1,31 @@
+# Sabse aasan tarika kisi bhi computer pe Likho chalane ka:
+#
+#     docker compose up
+#
+# Phir browser me kholo: http://localhost:4000
+
+services:
+  likho:
+    build: .
+    container_name: likho
+
+    ports:
+      # "0.0.0.0" isliye taki same wifi pe phone se bhi khul jaye.
+      # Sirf apne computer tak rakhna ho toh "127.0.0.1:4000:4000" kar do.
+      - "0.0.0.0:4000:4000"
+
+    volumes:
+      # Posts host machine pe rehte hain, container ke andar nahi.
+      # Container delete kar do, posts safe rahenge - aur inhe
+      # normal text editor se bhi khol sakte ho.
+      - ./blog-data:/home/likho/blog-data
+
+    # crash ho jaye toh apne aap wapas chalu ho jaye
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:4000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
