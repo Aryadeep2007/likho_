@@ -1,0 +1,67 @@
+{{define "content"}}
+
+<div class="editor" data-slug="{{.Post.Slug}}" data-new="{{.IsNew}}">
+
+  <div class="ed-head">
+    <input id="title" class="title-input" placeholder="Post ka title..."
+           value="{{.Post.Title}}" autocomplete="off">
+    <div class="ed-actions">
+      <span id="status" class="muted small"></span>
+      <label class="check">
+        <input type="checkbox" id="published" {{if .Post.Published}}checked{{end}}>
+        Publish
+      </label>
+      {{if not .IsNew}}
+        <button class="ghost danger" id="deleteBtn">Delete</button>
+      {{end}}
+      <button class="btn" id="saveBtn">Save <kbd>Ctrl S</kbd></button>
+    </div>
+  </div>
+
+  <div class="ed-tags">
+    <input id="tags" placeholder="tags: comma se alag karo (jaise: go, hackathon)"
+           value="{{.TagString}}" autocomplete="off">
+    {{if .Suggested}}
+      <div class="suggest">
+        <span class="muted small">suggest:</span>
+        {{range .Suggested}}
+          <button class="tag addtag" type="button" data-tag="{{.}}">+ {{.}}</button>
+        {{end}}
+      </div>
+    {{end}}
+  </div>
+
+  <!-- Text select karo, phir ek preset lagao - bilkul waise hi jaise Tab key
+       body me 2 space daal deta hai, ye bhi selectionStart/End se kaam karta hai.
+       Koi floating toolbar nahi (mobile pe selection ke upar apna hi bubble
+       banane se zyada jhanjhat hai), bas ek fixed row hai. -->
+  <div class="fx-toolbar">
+    <span class="muted small">Text select karo, phir:</span>
+    <button type="button" class="fx-btn fx-btn-legendary" data-fx="legendary">⚡ Legendary Glow</button>
+    <button type="button" class="fx-btn fx-btn-champion" data-fx="champion">🛡️ Champion Shine</button>
+    <button type="button" class="fx-btn fx-btn-holo" data-fx="holo">🌈 Holographic</button>
+  </div>
+
+  <!-- Do panel: left me likho, right me turant dikhe.
+       Preview client side pe banta hai, isliye ekdum instant hai. -->
+  <div class="split">
+    <textarea id="body" class="ed-body" spellcheck="false"
+      placeholder="Yahan likhna shuru karo...
+
+Markdown chalta hai. Aur [[dusre post ka naam]] likhoge toh wo link ban jayega.">{{.Post.Body}}</textarea>
+
+    <div id="preview" class="ed-preview post-body"></div>
+  </div>
+
+  <div class="ed-foot muted small">
+    <span id="wordcount">0 words</span>
+    <span class="dot">·</span>
+    <span>Ctrl+S se save · preview turant update hota hai</span>
+  </div>
+</div>
+
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/editor.js"></script>
+{{end}}

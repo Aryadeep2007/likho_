@@ -1,0 +1,23 @@
+{{define "content"}}
+
+<div class="pagehead">
+  <h1>Blog ka naksha</h1>
+  <p class="muted">Har gola ek post hai. Line matlab ek post dusre se
+  <code>[[link]]</code> se juda hai. Gole ko pakad ke ghuma sakte ho.</p>
+</div>
+
+<div class="graph-wrap">
+  <canvas id="graph"></canvas>
+  <div class="graph-empty" id="graphEmpty" hidden>
+    <p>Abhi koi link nahi hai.</p>
+    <p class="muted small">Kisi post me <code>[[dusre post ka naam]]</code> likho,
+    phir yahan wapas aao.</p>
+  </div>
+  <div class="graph-tip muted small">gole pe click karo → post khulega</div>
+</div>
+
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/graph.js"></script>
+{{end}}

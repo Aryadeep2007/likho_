@@ -1,0 +1,69 @@
+{{define "content"}}
+
+<div class="pagehead">
+  <h1>Dashboard</h1>
+  <p class="muted">Sab kuch is computer pe hi save hai. Koi Google Analytics nahi,
+  koi tracker nahi, koi data bahar nahi jata.</p>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="num">{{.Count}}</div>
+    <div class="lab">posts</div>
+  </div>
+  <div class="stat">
+    <div class="num">{{.TotalViews}}</div>
+    <div class="lab">total views</div>
+  </div>
+  <div class="stat">
+    <div class="num">{{.TotalWords}}</div>
+    <div class="lab">words likhe</div>
+  </div>
+  <div class="stat">
+    <div class="num">{{.Streak}} 🔥</div>
+    <div class="lab">din ka streak</div>
+  </div>
+</div>
+
+{{if .Top}}
+<section class="box">
+  <h4>Sabse zyada padhe gaye</h4>
+  <ol class="plain ranked">
+    {{range .Top}}
+      <li>
+        <a href="/p/{{.Slug}}">{{.Title}}</a>
+        <span class="muted small">{{.Views}} views</span>
+      </li>
+    {{end}}
+  </ol>
+</section>
+{{end}}
+
+<section class="box">
+  <h4>Log kahan tak padhte hain</h4>
+  <p class="muted small">Har post ko 10 hisso me baanta hai. Bar jitna chhota hota
+  jaye, utne log wahan tak pahunche hi nahi — matlab wahin pe boring ho raha hai.</p>
+
+  <div class="dropoff">
+    {{range .Posts}}
+      <div class="drow" data-depth="{{json .Depth}}">
+        <a class="dname" href="/p/{{.Slug}}">{{.Title}}</a>
+        <div class="dbars"></div>
+        <span class="dpct muted small"></span>
+      </div>
+    {{end}}
+  </div>
+</section>
+
+<section class="box">
+  <h4>Backup</h4>
+  <p class="small">Poora blog — posts, history, sab kuch — ek file me.
+  Pendrive me daal lo ya khud ko mail kar do.</p>
+  <a class="btn" href="/export">Backup download karo</a>
+</section>
+
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/dashboard.js"></script>
+{{end}}

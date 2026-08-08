@@ -1,0 +1,105 @@
+{{define "content"}}
+
+{{if .NotFound}}
+  <div class="empty">
+    <h2>Aisa koi page nahi hai 🤷</h2>
+    <p class="muted">Link galat hai ya post delete ho chuka hai.</p>
+    <a class="btn" href="/">Wapas home</a>
+  </div>
+{{else}}
+
+  {{if .Imported}}
+    <div class="flash">📥 Import ho gaya — {{.Imported}} file aayi. Neeche dekho.</div>
+  {{end}}
+
+  {{if .FilterTag}}
+    <div class="pagehead">
+      <h1>#{{.FilterTag}}</h1>
+      <a class="muted small" href="/">← saare posts</a>
+    </div>
+  {{end}}
+
+  <div class="cols">
+    <div class="main-col">
+
+      {{if not .Posts}}
+        {{if not .Drafts}}
+          {{if not .Scheduled}}
+            <div class="empty">
+              <h2>Abhi kuch likha nahi hai</h2>
+              <p class="muted">Pehla post likhne ka time aa gaya.</p>
+              <a class="btn" href="/new">Chalo shuru karte hain</a>
+            </div>
+          {{end}}
+        {{end}}
+      {{end}}
+
+      {{range .Posts}}
+        <article class="card">
+          <a class="card-title" href="/p/{{.Slug}}">{{.Title}}</a>
+          <div class="meta">
+            {{humanTime .Created}}
+            <span class="dot">·</span> {{readingTime .Body}} min padhne me
+            {{if .Views}}<span class="dot">·</span> {{.Views}} baar dekha{{end}}
+          </div>
+          <p class="excerpt">{{call $.Excerpt .Body 170}}</p>
+          {{if .Tags}}
+            <div class="tags">
+              {{range .Tags}}<a class="tag" href="/tag/{{.}}">#{{.}}</a>{{end}}
+            </div>
+          {{end}}
+        </article>
+      {{end}}
+
+      {{if .Scheduled}}
+        <h3 class="section">Scheduled <span class="muted small">(sirf tumhe dikh raha hai)</span></h3>
+        {{range .Scheduled}}
+          <article class="card draft">
+            <a class="card-title" href="/p/{{.Slug}}">{{.Title}}</a>
+            <div class="meta">
+              <span class="pill">scheduled</span>
+              <span class="dot">·</span> {{.PublishAt.Format "2 Jan, 3:04 PM"}} ko publish hoga
+            </div>
+            <p class="excerpt">{{call $.Excerpt .Body 170}}</p>
+          </article>
+        {{end}}
+      {{end}}
+
+      {{if .Drafts}}
+        <h3 class="section">Drafts <span class="muted small">(sirf tumhe dikh rahe hain)</span></h3>
+        {{range .Drafts}}
+          <article class="card draft">
+            <a class="card-title" href="/p/{{.Slug}}">{{.Title}}</a>
+            <div class="meta">
+              <span class="pill">draft</span>
+              <span class="dot">·</span> {{humanTime .Updated}} me change kiya
+            </div>
+            <p class="excerpt">{{call $.Excerpt .Body 170}}</p>
+          </article>
+        {{end}}
+      {{end}}
+
+    </div>
+
+    <aside class="side">
+      {{if .Tags}}
+        <div class="box">
+          <h4>Tags</h4>
+          <div class="tags">
+            {{range .Tags}}
+              <a class="tag" href="/tag/{{.Tag}}">#{{.Tag}} <span class="muted">{{.Count}}</span></a>
+            {{end}}
+          </div>
+        </div>
+      {{end}}
+
+      <div class="box tip">
+        <h4>Tip</h4>
+        <p class="small">Post ke andar <code>[[kisi post ka naam]]</code> likho — wo apne aap
+        link ban jayega. Phir <a href="/graph">Naksha</a> pe poora jaal dekho.</p>
+      </div>
+    </aside>
+  </div>
+
+{{end}}
+{{end}}

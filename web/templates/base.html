@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}} · Likho</title>
+<link rel="stylesheet" href="/static/style.css">
+<meta name="csrf-token" content="{{.CSRFToken}}">
+<!-- favicon inline rakha hai taki ek aur file na bhejni pade -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap bar">
+    <a class="logo" href="/">✍️ <span>Likho</span></a>
+
+    <nav class="nav">
+      <a href="/" class="{{if eq .Nav "home"}}on{{end}}">Posts</a>
+      <a href="/graph" class="{{if eq .Nav "graph"}}on{{end}}">Naksha</a>
+      {{if .User}}<a href="/dashboard" class="{{if eq .Nav "dashboard"}}on{{end}}">Dashboard</a>{{end}}
+    </nav>
+
+    <div class="bar-right">
+      <!-- search box. Ctrl+K se bhi khulta hai.
+           Icons SVG me hain, font ke character (jaise ⌕) me nahi - kyunki
+           wo har Windows pe available nahi hote aur khali dabba dikhta hai. -->
+      <button class="ghost" id="openSearch" title="Ctrl + K">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16.5 16.5"/>
+        </svg>
+        <span class="lbl">Search</span> <kbd>Ctrl K</kbd>
+      </button>
+
+      {{if .User}}<button class="ghost" id="qrBtn" title="Phone pe kholo">QR</button>{{end}}
+
+      <button class="ghost" id="themeBtn" title="Dark / light" aria-label="Theme badlo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+
+      {{if .User}}
+        <a class="btn" href="/new">+ Naya post</a>
+        <form action="/logout" method="post" class="logout-form">
+          <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+          <button class="ghost" type="submit" title="Logout ({{.User.DisplayName}})">Logout</button>
+        </form>
+      {{else}}
+        <a class="btn" href="/login">Log in</a>
+      {{end}}
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  {{block "content" .}}{{end}}
+</main>
+
+<footer class="wrap foot">
+  <span>{{.Count}} post · Likho pe bana</span>
+  <span class="dot">·</span>
+  <a href="/rss.xml" title="RSS feed">RSS</a>
+  {{if .User}}
+    <span class="dot">·</span>
+    <a href="/export" title="Poora blog ek file me download karo">Backup download</a>
+    <span class="dot">·</span>
+    <label class="linkish">
+      Import
+      <form id="importForm" action="/import" method="post" enctype="multipart/form-data" hidden>
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <input type="file" name="bundle" id="bundleInput" accept=".likho,.zip">
+      </form>
+    </label>
+  {{end}}
+</footer>
+
+<!-- ================= Command palette (Ctrl+K) ================= -->
+<div class="overlay" id="searchOverlay" hidden>
+  <div class="palette">
+    <input id="searchInput" type="text" placeholder="Kuch bhi type karo..." autocomplete="off">
+    <div id="searchResults" class="results"></div>
+    <div class="palette-foot">
+      <kbd>↑</kbd><kbd>↓</kbd> chalo · <kbd>Enter</kbd> kholo · <kbd>Esc</kbd> band karo
+    </div>
+  </div>
+</div>
+
+<!-- ================= QR modal ================= -->
+<div class="overlay" id="qrOverlay" hidden>
+  <div class="modal center">
+    <h3>Phone se kholo</h3>
+    {{if .LanURL}}
+      <img src="/qr.png" alt="QR code" width="240" height="240" class="qr">
+      <p class="mono">{{.LanURL}}</p>
+      <p class="muted small">Phone aur ye computer same wifi pe hone chahiye.</p>
+    {{else}}
+      <p class="muted">Abhi kisi wifi se connected nahi lag rahe.<br>Wifi se jodo, phir try karo.</p>
+    {{end}}
+    <button class="btn" data-close>Theek hai</button>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+{{block "scripts" .}}{{end}}
+</body>
+</html>

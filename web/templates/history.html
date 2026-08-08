@@ -1,0 +1,43 @@
+{{define "content"}}
+
+<div class="pagehead">
+  <h1>History</h1>
+  <p class="muted">
+    <a href="/p/{{.Post.Slug}}">{{.Post.Title}}</a> ke purane versions.
+    Har save pe ek copy apne aap ban jati hai.
+  </p>
+</div>
+
+{{if not .Revs}}
+  <div class="empty">
+    <h2>Abhi koi purana version nahi hai</h2>
+    <p class="muted">Ek baar post edit karke save karo, phir yahan dikhega.</p>
+  </div>
+{{else}}
+  <div class="revs">
+    {{range .Revs}}
+      <details class="rev">
+        <summary>
+          <span>{{humanTime .Stamp}}</span>
+          <span class="muted small">{{.Stamp.Format "2 Jan 2006, 3:04 PM"}}</span>
+          <button class="ghost restore" data-id="{{.ID}}"
+                  data-slug="{{$.Post.Slug}}">Isko wapas lao</button>
+        </summary>
+        <div class="rev-body">
+          <strong>{{.Title}}</strong>
+          <pre>{{.Body}}</pre>
+        </div>
+      </details>
+    {{end}}
+  </div>
+  <p class="muted small">
+    Restore karne pe abhi wala version bhi history me chala jayega —
+    toh galti se restore kar diya toh wapas aa sakte ho.
+  </p>
+{{end}}
+
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/history.js"></script>
+{{end}}

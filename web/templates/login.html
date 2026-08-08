@@ -1,0 +1,26 @@
+{{define "content"}}
+
+<div class="pagehead">
+  <h1>Log in</h1>
+  <p class="muted">Sirf tum likh/edit kar sakte ho. Baaki sab bas padh sakte hain.</p>
+</div>
+
+<div class="box auth-box">
+  {{if .Error}}<div class="error-box">{{.Error}}</div>{{end}}
+  <form method="post" action="/login">
+    <input type="hidden" name="next" value="{{.Next}}">
+    <div class="form-field">
+      <label for="li-username">Username</label>
+      <input id="li-username" name="username" autocomplete="username" required autofocus>
+    </div>
+    <div class="form-field">
+      <label for="li-pass">Password</label>
+      <input id="li-pass" type="password" name="password" autocomplete="current-password" required>
+    </div>
+    <div class="form-actions">
+      <button class="btn" type="submit">Log in</button>
+    </div>
+  </form>
+</div>
+
+{{end}}

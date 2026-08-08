@@ -1,0 +1,70 @@
+{{define "content"}}
+
+<article class="post" data-slug="{{.Post.Slug}}" data-depth="{{json .Post.Depth}}">
+
+  <!-- Ye patli si patti left me post ke saath saath chalti hai.
+       Jitna gehra rang, utne zyada log wahan tak padhe. Jahan halka ho
+       jaye, samjho log wahin bore hoke bhaag gaye. -->
+  <div class="heatstrip" id="heatstrip" title="Log kahan tak padhte hain"></div>
+
+  <header class="post-head">
+    <h1>{{.Post.Title}}</h1>
+    <div class="meta">
+      {{if .Post.AuthorName}}{{.Post.AuthorName}}<span class="dot">·</span>{{end}}
+      {{humanTime .Post.Created}}
+      <span class="dot">·</span> {{readingTime .Post.Body}} min
+      <span class="dot">·</span> {{.Post.Views}} views
+      {{if not .Post.Published}}<span class="pill">draft</span>{{end}}
+      {{if .Post.IsScheduled}}<span class="pill">scheduled</span>{{end}}
+    </div>
+    {{if .Post.SeriesTitle}}
+      <p class="muted small">Series: <a href="/series/{{.Post.SeriesSlug}}">{{.Post.SeriesTitle}}</a></p>
+    {{end}}
+    {{if .Post.Tags}}
+      <div class="tags">
+        {{range .Post.Tags}}<a class="tag" href="/tag/{{.}}">#{{.}}</a>{{end}}
+      </div>
+    {{end}}
+    <div class="post-actions">
+      <a class="ghost" href="/edit/{{.Post.Slug}}">Edit</a>
+      {{if .Revisions}}
+        <a class="ghost" href="/history/{{.Post.Slug}}">History ({{.Revisions}})</a>
+      {{end}}
+    </div>
+  </header>
+
+  <div class="post-body">
+    {{.HTML}}
+  </div>
+</article>
+
+{{if .Backlinks}}
+  <section class="box linkbox">
+    <h4>Yahan se link aaya hai</h4>
+    <ul class="plain">
+      {{range .Backlinks}}
+        <li><a href="/p/{{.Slug}}">{{.Title}}</a></li>
+      {{end}}
+    </ul>
+  </section>
+{{end}}
+
+{{if .Related}}
+  <section class="related">
+    <h4>Shayad ye bhi pasand aaye</h4>
+    <div class="rel-grid">
+      {{range .Related}}
+        <a class="rel-card" href="/p/{{.Slug}}">
+          <strong>{{.Title}}</strong>
+          <span class="muted small">{{readingTime .Body}} min</span>
+        </a>
+      {{end}}
+    </div>
+  </section>
+{{end}}
+
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/reader.js"></script>
+{{end}}
