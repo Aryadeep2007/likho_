@@ -1,0 +1,80 @@
+
+   __    _ __   __         
+  / /   (_) /__/ /_  ____  
+ / /   / / //_/ __ \/ __ \ 
+/ /___/ / ,< / / / / /_/ / 
+\____/_/_/|_/_/ /_/\____/  
+  likho. apna blog, apne computer pe.
+
+2026/08/08 15:50:56 [likho] 0 post mile -> C:\Users\aryad\Downloads\likho\likho\blog-data
+2026/08/08 15:50:56 [likho] pehli baar chala rahe ho, ek sample post daal diya hai
+
+  ✅  Blog chalu ho gaya!
+      Is computer pe    :  http://localhost:4000
+      Phone / dost ke PC:  http://10.31.32.36:4000
+      (same wifi pe hona chahiye - ya QR scan kar lo header me)
+
+  Band karna ho toh is window me Ctrl+C dabao, ya bas window band kar do.
+
+2026/08/08 15:50:57 GET /  (6ms)
+2026/08/08 15:50:57 GET /  (7ms)
+2026/08/08 15:50:57 GET /qr.png  (0s)
+2026/08/08 15:50:57 GET /login  (1ms)
+2026/08/08 15:50:57 GET /setup  (9ms)
+2026/08/08 15:51:39 GET /  (6ms)
+2026/08/08 15:51:39 GET /qr.png  (0s)
+2026/08/08 15:51:39 GET /login  (0s)
+2026/08/08 15:51:39 GET /setup  (6ms)
+2026/08/08 15:51:40 GET /  (5ms)
+2026/08/08 15:51:40 GET /qr.png  (0s)
+2026/08/08 15:51:40 GET /login  (0s)
+2026/08/08 15:51:40 GET /setup  (7ms)
+2026/08/08 15:51:44 GET /login  (0s)
+2026/08/08 15:51:44 GET /setup  (6ms)
+2026/08/08 15:51:44 GET /qr.png  (0s)
+2026/08/08 15:51:44 GET /login  (0s)
+2026/08/08 15:51:44 GET /setup  (6ms)
+2026/08/08 15:51:47 GET /setup  (4ms)
+2026/08/08 15:51:47 GET /qr.png  (0s)
+2026/08/08 15:51:47 GET /login  (0s)
+2026/08/08 15:51:47 GET /setup  (4ms)
+2026/08/08 15:52:28 GET /  (9ms)
+2026/08/08 15:52:28 GET /qr.png  (0s)
+2026/08/08 15:52:28 GET /login  (0s)
+2026/08/08 15:52:28 GET /setup  (7ms)
+2026/08/08 15:52:45 GET /  (5ms)
+2026/08/08 15:52:45 GET /qr.png  (0s)
+2026/08/08 15:52:45 GET /login  (0s)
+2026/08/08 15:52:45 GET /setup  (8ms)
+2026/08/08 15:52:45 GET /  (5ms)
+2026/08/08 15:52:45 GET /qr.png  (1ms)
+2026/08/08 15:52:45 GET /login  (0s)
+2026/08/08 15:52:45 GET /setup  (6ms)
+2026/08/08 15:53:06 GET /  (8ms)
+2026/08/08 15:53:06 GET /qr.png  (0s)
+2026/08/08 15:53:06 GET /login  (0s)
+2026/08/08 15:53:06 GET /setup  (6ms)
+2026/08/08 15:53:08 GET /  (6ms)
+2026/08/08 15:53:08 GET /qr.png  (0s)
+2026/08/08 15:53:08 GET /login  (0s)
+2026/08/08 15:53:08 GET /setup  (4ms)
+2026/08/08 15:53:09 GET /  (6ms)
+2026/08/08 15:53:09 GET /qr.png  (0s)
+2026/08/08 15:53:09 GET /login  (0s)
+2026/08/08 15:53:09 GET /setup  (5ms)
+2026/08/08 15:53:10 GET /  (5ms)
+2026/08/08 15:53:10 GET /qr.png  (0s)
+2026/08/08 15:53:10 GET /login  (0s)
+2026/08/08 15:53:10 GET /setup  (5ms)
+2026/08/08 15:53:10 GET /  (5ms)
+2026/08/08 15:53:10 GET /qr.png  (0s)
+2026/08/08 15:53:10 GET /login  (0s)
+2026/08/08 15:53:10 GET /setup  (5ms)
+2026/08/08 15:53:10 GET /  (6ms)
+2026/08/08 15:53:10 GET /qr.png  (0s)
+2026/08/08 15:53:10 GET /login  (0s)
+2026/08/08 15:53:10 GET /setup  (6ms)
+2026/08/08 16:02:51 GET /  (13ms)
+2026/08/08 16:02:51 GET /qr.png  (0s)
+2026/08/08 16:02:51 GET /login  (1ms)
+2026/08/08 16:02:52 GET /setup  (6ms)
